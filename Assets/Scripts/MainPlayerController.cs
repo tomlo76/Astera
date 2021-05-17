@@ -10,6 +10,4 @@ public class MainPlayerController : MonoBehaviour
 	void Update()
 	{
 	}
-
-	public GameObject getPlayer() { return player; }
 }

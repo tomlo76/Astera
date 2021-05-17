@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// Doc : https://developer.oculus.com/documentation/unity/unity-ovrinput/
+
 public class HandController : MonoBehaviour // MonoBehaviour est la classe de base de tous les objets C# d'Unity
 {
 
@@ -119,7 +121,7 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 			MainPlayerController player = (MainPlayerController) GameObject.FindObjectOfType(typeof(MainPlayerController));
 			TeleportationPoint tp = (TeleportationPoint)GameObject.FindObjectOfType(typeof(TeleportationPoint));
 
-			player.transform.position = tp.transform.position + new Vector3(0, 1, 0);
+			player.transform.position = tp.transform.position;// + new Vector3(0, 1, 0);
 		}
 
 

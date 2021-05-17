@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TeleportationPoint : MonoBehaviour
 {
+    [Header("Default properties")]
+    public bool active = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +17,5 @@ public class TeleportationPoint : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public Vector3 getPosition()
-    {
-        return transform.position;
     }
 }
