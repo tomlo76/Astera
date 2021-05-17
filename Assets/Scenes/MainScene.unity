@@ -921,6 +921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86490450f1fc20b4598abcb012a5dc31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateOnActive: 0
   active: 0
   activeMaterial: {fileID: 2100000, guid: c9c864d01ac2173409f03b27d46e5ed5, type: 2}
   unactiveMaterial: {fileID: 2100000, guid: f9c862a38bfcc944a941d4cd53c80a89, type: 2}
