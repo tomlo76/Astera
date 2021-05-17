@@ -114,7 +114,16 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 
 	protected void handle_controller_behavior()
     {
-		if (has_hand_changed())
+		if (is_B_pressed() && has_B_changed())
+        {
+			MainPlayerController player = (MainPlayerController) GameObject.FindObjectOfType(typeof(MainPlayerController));
+			TeleportationPoint tp = (TeleportationPoint)GameObject.FindObjectOfType(typeof(TeleportationPoint));
+
+			player.transform.position = tp.transform.position + new Vector3(0, 1, 0);
+		}
+
+
+		/*if (has_hand_changed())
 		{
 			if (is_hand_closed())
 			{
@@ -170,6 +179,6 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 			{
 				object_grasped.switch_visibility();
 			}
-		}
+		}*/
 	}
 }

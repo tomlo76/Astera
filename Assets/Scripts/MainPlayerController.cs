@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class MainPlayerController : MonoBehaviour
 {
-
-	/* ... */
+	[Header("Player")]
+	public GameObject player = null;
 
 	void Start() { /* ... */ }
 
@@ -11,5 +11,5 @@ public class MainPlayerController : MonoBehaviour
 	{
 	}
 
-	/* ... */
+	public GameObject getPlayer() { return player; }
 }

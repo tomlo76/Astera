@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Teleportation_point : MonoBehaviour
+public class TeleportationPoint : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,5 +14,10 @@ public class Teleportation_point : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public Vector3 getPosition()
+    {
+        return transform.position;
     }
 }
