@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class TeleportationPoint : MonoBehaviour
 {
-    [Header("Default properties")]
+    [Header("Properties")]
+    public bool rotateOnActive = false;
+
+    [Header("Default values")]
     public bool active = false;
 
     [Header("Materials")]
@@ -20,7 +23,9 @@ public class TeleportationPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // Model from blender, so right hand convention is used, Vector3.forward = (0, 0, 1)
+        // Doc : https://docs.unity3d.com/ScriptReference/Vector3.html
+        if (rotateOnActive && active) transform.Rotate(Vector3.forward * 50 * Time.deltaTime, Space.Self);
     }
 
     public void activate(bool a = true)
