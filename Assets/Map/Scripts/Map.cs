@@ -32,9 +32,7 @@ public class Map : VisibilitySwitchObject
         int i = 0;
         foreach (TeleportationPoint point in tpPoints)
         {
-            mapTpPoints[i].setTpPoint(point);
-
-            i++;
+            mapTpPoints[i++].setTpPoint(point);
         }
 
 

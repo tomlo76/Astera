@@ -39,4 +39,9 @@ public class MapTeleportMarker : MonoBehaviour
             transform.localPosition = new Vector3(-tpPoint.transform.position.x / 1000, -tpPoint.transform.position.z / 1000, transform.localPosition.z);
         }
     }
+
+    public TeleportationPoint getTpPoint()
+    {
+        return tpPoint;
+    }
 }

@@ -25,6 +25,8 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 
 	static protected ActivationPanel[] tpActivationPanels;
 
+	static protected MapTeleportMarker[] tpMarkers;
+
 
 	// Store the previous state of the buttons
 	protected bool button_A_previous_state;
@@ -42,6 +44,9 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 
 		if (tpActivationPanels == null) tpActivationPanels = GameObject.FindObjectsOfType<ActivationPanel>();
 
+		if (map == null) map = GameObject.FindObjectOfType<Map>();
+		if (playerController == null) playerController = (MainPlayerController)GameObject.FindObjectOfType<MainPlayerController>();
+
 		// Initialization of the states
 		button_A_previous_state = is_A_pressed();
 		button_B_previous_state = is_B_pressed();
@@ -54,7 +59,10 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 	void Update()
 	{
 		OVRInput.Update();
-		
+
+		if (tpMarkers == null) tpMarkers = GameObject.FindObjectsOfType<MapTeleportMarker>(true);
+		if (tpMarkers == null || tpMarkers.Length == 0) tpMarkers = null;
+
 		handle_controller_behavior();
 	}
 	
@@ -149,15 +157,18 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
     {
 		if (is_B_pressed() && has_B_changed())
 		{
-			MainPlayerController player = (MainPlayerController)GameObject.FindObjectOfType(typeof(MainPlayerController));
+			/*MainPlayerController player = (MainPlayerController)GameObject.FindObjectOfType(typeof(MainPlayerController));
 			TeleportationPoint tp = (TeleportationPoint)GameObject.FindObjectOfType(typeof(TeleportationPoint));
 
-			if (tp.active) player.transform.position = tp.transform.position + new Vector3(0, 1, 0);
+			if (tp.active) player.transform.position = tp.transform.position + new Vector3(0, 1, 0);*/
+			tpMarkers[0].getTpPoint().teleport(playerController);
 		}
 
 		if (is_A_pressed() && has_A_changed())
 		{
-			panelInteraction();
+			// Do not do multiple actions, there is priority
+			if (panelInteraction()) return;
+			if (mapInteraction()) return;
 		}
 
 		if (is_thumbstick_pressed() && has_thumbstick_changed())
@@ -228,21 +239,23 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 		}*/
 	}
 
-	protected void panelInteraction()
+	protected bool panelInteraction()
     {
 		int nearest_id = getNearestPanelId(ActivationPanel.getMaxInteractionDistance());
 
-		if (nearest_id < 0) return;
+		if (nearest_id < 0) return false;
 
 		tpActivationPanels[nearest_id].activateTp();
+
+		return true;
 	}
 
 	protected int getNearestPanelId(float distance_threshold)
     {
-		int nearest_id = -1;
+		int nearestId = -1;
 
 		float distance;
-		float nearest_distance = float.MaxValue;
+		float nearestDistance = float.MaxValue;
 
 		for (int i = 0 ; i < tpActivationPanels.Length ; i++)
 		{
@@ -250,13 +263,42 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 
 			distance = Vector3.Distance(this.transform.position, tpActivationPanels[i].transform.position);
 
-			if (distance < distance_threshold && distance < nearest_distance)
+			if (distance < distance_threshold && distance < nearestDistance)
 			{
-				nearest_id = i;
-				nearest_distance = distance;
+				nearestId = i;
+				nearestDistance = distance;
 			}
 		}
 
-		return nearest_id;
+		return nearestId;
 	}
+
+	protected bool mapInteraction()
+    {
+		if (!map.isAvailable() || tpMarkers == null) return false;
+
+
+
+		int nearestId = -1;
+
+		float distance;
+		float nearestDistance = float.MaxValue;
+
+		for (int i = 0 ; i < tpMarkers.Length ; i++)
+        {
+			if (!tpMarkers[i].getTpPoint().isActive()) continue; // Continue if the current tp point is not activated
+
+			distance = Vector3.Distance(transform.position, tpMarkers[i].transform.position);
+
+			if (distance < 0.05 && distance < nearestDistance)
+            {
+				nearestId = i;
+				nearestDistance = distance;
+            }
+        }
+
+		if (nearestId < 0) return false;
+
+		return tpMarkers[nearestId].getTpPoint().teleport(playerController);
+    }
 }

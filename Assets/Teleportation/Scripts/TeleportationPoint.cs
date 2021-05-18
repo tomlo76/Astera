@@ -63,4 +63,16 @@ public class TeleportationPoint : MonoBehaviour
             this.GetComponent<MeshRenderer>().material = unactiveMaterial;
         }
     }
+
+    public bool teleport(MainPlayerController player)
+    {
+        if (isActive())
+        {
+            player.transform.position = transform.position + new Vector3(0, 1, 0);
+
+            return true;
+        }
+
+        return false;
+    }
 }
