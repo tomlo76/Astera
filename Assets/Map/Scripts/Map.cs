@@ -15,4 +15,9 @@ public class Map : VisibilitySwitchObject
 
         setVisible(false); // Map is not visible by default, inherited class variable from VisibilitySwitchObject
     }
+
+    public bool isAvailable()
+    {
+        return isVisible();
+    }
 }

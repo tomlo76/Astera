@@ -32,6 +32,11 @@ public class VisibilitySwitchObject : MonoBehaviour
         transform.gameObject.SetActive(visible);
     }
 
+    public bool isVisible()
+    {
+        return visible;
+    }
+
     public void switchVisibility()
     {
         visible = !visible;
