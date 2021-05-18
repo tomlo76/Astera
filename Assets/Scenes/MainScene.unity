@@ -217,7 +217,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &279438591
 GameObject:
@@ -464,6 +464,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43e297d6131ef5e40a3f53372a90c4f2, type: 3}
+--- !u!1001 &514890286
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2819586529441763965, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
+      propertyPath: m_Name
+      value: TeleportationBase B2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 135.21935
+      objectReference: {fileID: 0}
+    - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 373.9061
+      objectReference: {fileID: 0}
+    - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92730504
+      objectReference: {fileID: 0}
+    - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.37430662
+      objectReference: {fileID: 0}
+    - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 43.963
+      objectReference: {fileID: 0}
+    - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
 --- !u!1001 &528922431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -885,15 +942,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2819586529441763965, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
       propertyPath: m_Name
-      value: TeleportationBase
+      value: TeleportationBase B1
       objectReference: {fileID: 0}
     - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 289
+      value: 272.4
       objectReference: {fileID: 0}
     - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -901,7 +958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 166.1
+      value: 149.7
       objectReference: {fileID: 0}
     - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1121,7 +1178,7 @@ Transform:
   m_Children:
   - {fileID: 1167848306}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1376823099
 MonoBehaviour:
