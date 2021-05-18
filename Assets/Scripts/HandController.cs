@@ -14,6 +14,7 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 	// Store the player controller to forward it to the object
 	[Header("Player Controller")]
 	public MainPlayerController playerController;
+	public Map map;
 
 
 
@@ -28,6 +29,8 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 	// Store the previous state of the buttons
 	protected bool button_A_previous_state;
 	protected bool button_B_previous_state;
+	protected bool button_thumbstick_previous_state;
+	protected bool button_start_previous_state;
 	protected bool hand_previous_state; // 0 -> opened ; 1 -> closed
 
 
@@ -42,6 +45,8 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 		// Initialization of the states
 		button_A_previous_state = is_A_pressed();
 		button_B_previous_state = is_B_pressed();
+		button_thumbstick_previous_state = is_thumbstick_pressed();
+		button_start_previous_state = is_start_pressed();
 		hand_previous_state = is_hand_closed();
 	}
 
@@ -59,6 +64,8 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 		// Update buttons state for the next frame
 		button_A_previous_state = is_A_pressed();
 		button_B_previous_state = is_B_pressed();
+		button_thumbstick_previous_state = is_thumbstick_pressed();
+		button_start_previous_state = is_start_pressed();
 		hand_previous_state = is_hand_closed();
 	}
 
@@ -75,6 +82,16 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 		return ((handType == HandType.RightHand) && OVRInput.Get(OVRInput.Button.Two)) || ((handType == HandType.LeftHand) && OVRInput.Get(OVRInput.Button.Four));
 	}
 
+	protected bool is_thumbstick_pressed()
+    {
+		return ((handType == HandType.RightHand) && OVRInput.Get(OVRInput.Button.SecondaryThumbstick)) || ((handType == HandType.LeftHand) && OVRInput.Get(OVRInput.Button.PrimaryThumbstick));
+	}
+
+	protected bool is_start_pressed()
+    {
+		return OVRInput.Get(OVRInput.RawButton.Start);
+    }
+
 	// Return true if the current state is different from the previous one
 	protected bool has_A_changed()
     {
@@ -86,6 +103,16 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 	{
 		return (button_B_previous_state != is_B_pressed());
 	}
+
+	protected bool has_thumbstick_changed()
+	{
+		return (button_thumbstick_previous_state != is_thumbstick_pressed());
+	}
+
+	protected bool has_start_changed()
+    {
+		return (button_start_previous_state != is_start_pressed());
+    }
 
 
 
@@ -121,8 +148,8 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 	protected void handle_controller_behavior()
     {
 		if (is_B_pressed() && has_B_changed())
-        {
-			MainPlayerController player = (MainPlayerController) GameObject.FindObjectOfType(typeof(MainPlayerController));
+		{
+			MainPlayerController player = (MainPlayerController)GameObject.FindObjectOfType(typeof(MainPlayerController));
 			TeleportationPoint tp = (TeleportationPoint)GameObject.FindObjectOfType(typeof(TeleportationPoint));
 
 			if (tp.active) player.transform.position = tp.transform.position + new Vector3(0, 1, 0);
@@ -131,11 +158,15 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 		if (is_A_pressed() && has_A_changed())
 		{
 			panelInteraction();
-
-			//TeleportationPoint tp = (TeleportationPoint)GameObject.FindObjectOfType(typeof(TeleportationPoint));
-
-			//tp.activate(!tp.active);
 		}
+
+		if (is_thumbstick_pressed() && has_thumbstick_changed())
+		{
+			if (map != null)
+            {
+				map.switchVisibility();
+			}
+        }
 
 
 		/*if (has_hand_changed())
