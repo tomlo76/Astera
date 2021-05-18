@@ -893,7 +893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 330.56
+      value: 289
       objectReference: {fileID: 0}
     - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -901,7 +901,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 309.45
+      value: 166.1
       objectReference: {fileID: 0}
     - target: {fileID: 3200651611855259847, guid: fc3788f91f67f4a4f8a16b8263ba274a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1135,6 +1135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a8313cbb8aab247a6977d3768c9a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teleportMarkerPrefab: {fileID: 5275632840042056975, guid: 7b2c2867601ad89438f455816815c5f0, type: 3}
 --- !u!1001 &1634831532
 PrefabInstance:
   m_ObjectHideFlags: 0
