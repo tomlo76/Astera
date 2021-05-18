@@ -889,7 +889,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a940ce33ec56f2b4cbc613d0e22ca554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1772391119}
 --- !u!64 &1042619347
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -923,7 +922,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c9c864d01ac2173409f03b27d46e5ed5, type: 2}
+  - {fileID: 2100000, guid: 8c97ef7f47c51ba40a96463fb5e7d61d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1037,6 +1036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateOnActive: 1
+  speed: 25
   active: 0
   activeMaterial: {fileID: 2100000, guid: c9c864d01ac2173409f03b27d46e5ed5, type: 2}
   unactiveMaterial: {fileID: 2100000, guid: f9c862a38bfcc944a941d4cd53c80a89, type: 2}
@@ -1154,11 +1154,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43e297d6131ef5e40a3f53372a90c4f2, type: 3}
---- !u!1 &1772391119 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3665557094125149948, guid: e4f60ea8a89044448a72ed9d14c7951f, type: 3}
-  m_PrefabInstance: {fileID: 747432065}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1890291543
 PrefabInstance:
   m_ObjectHideFlags: 0
