@@ -109,5 +109,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d8ec47ac6e57674fa230cc0b7ebed8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeMaterial: {fileID: 2100000, guid: c9c864d01ac2173409f03b27d46e5ed5, type: 2}
-  unactiveMaterial: {fileID: 2100000, guid: f9c862a38bfcc944a941d4cd53c80a89, type: 2}
+  activeMaterial: {fileID: 2100000, guid: a8bd93ed6e19065479c4634810a02269, type: 2}
+  unactiveMaterial: {fileID: 2100000, guid: ee1a609e6ce155a41995d5bdf70786be, type: 2}
