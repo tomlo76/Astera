@@ -15,6 +15,8 @@ public class TeleportationPoint : MonoBehaviour
     public Material activeMaterial;
     public Material unactiveMaterial;
 
+    protected ActivationPanel linkedPanel = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +31,25 @@ public class TeleportationPoint : MonoBehaviour
         if (rotateOnActive && active) transform.Rotate(Vector3.forward * speed * Time.deltaTime, Space.Self);
     }
 
+    public bool setActivationPanel(ActivationPanel panel)
+    {
+        if (linkedPanel != null) return false;
+
+        linkedPanel = panel;
+
+        return true;
+    }
+
     public void activate(bool a = true)
     {
         active = a;
 
         setMaterial();
+    }
+
+    public bool isActive()
+    {
+        return active;
     }
 
     protected void setMaterial()

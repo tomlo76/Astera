@@ -22,6 +22,8 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 	// thus there is no need to duplicate it for each instance
 	static protected ObjectAnchor[] anchors_in_the_scene;
 
+	static protected ActivationPanel[] tpActivationPanels;
+
 
 	// Store the previous state of the buttons
 	protected bool button_A_previous_state;
@@ -34,6 +36,8 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 	{
 		// Prevent multiple fetch
 		if (anchors_in_the_scene == null) anchors_in_the_scene = GameObject.FindObjectsOfType<ObjectAnchor>();
+
+		if (tpActivationPanels == null) tpActivationPanels = GameObject.FindObjectsOfType<ActivationPanel>();
 
 		// Initialization of the states
 		button_A_previous_state = is_A_pressed();
@@ -126,9 +130,11 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 
 		if (is_A_pressed() && has_A_changed())
 		{
-			TeleportationPoint tp = (TeleportationPoint)GameObject.FindObjectOfType(typeof(TeleportationPoint));
+			panelInteraction();
 
-			tp.activate(!tp.active);
+			//TeleportationPoint tp = (TeleportationPoint)GameObject.FindObjectOfType(typeof(TeleportationPoint));
+
+			//tp.activate(!tp.active);
 		}
 
 
@@ -189,5 +195,37 @@ public class HandController : MonoBehaviour // MonoBehaviour est la classe de ba
 				object_grasped.switch_visibility();
 			}
 		}*/
+	}
+
+	protected void panelInteraction()
+    {
+		int nearest_id = getNearestPanelId(ActivationPanel.getMaxInteractionDistance());
+
+		if (nearest_id < 0) return;
+
+		tpActivationPanels[nearest_id].activateTp();
+	}
+
+	protected int getNearestPanelId(float distance_threshold)
+    {
+		int nearest_id = -1;
+
+		float distance;
+		float nearest_distance = float.MaxValue;
+
+		for (int i = 0 ; i < tpActivationPanels.Length ; i++)
+		{
+			if (!tpActivationPanels[i].isAvailable()) continue;
+
+			distance = Vector3.Distance(this.transform.position, tpActivationPanels[i].transform.position);
+
+			if (distance < distance_threshold && distance < nearest_distance)
+			{
+				nearest_id = i;
+				nearest_distance = distance;
+			}
+		}
+
+		return nearest_id;
 	}
 }
